@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Interesse - Parceria Gabriel Melo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1d1d1b 0%, #333333 100%);
+            color: #f7f7f6;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            border-bottom: 3px solid #d2d323;
+        }
+
+        .logo {
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            color: #d2d323;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #7e7e7c;
+            font-size: 1.1rem;
+        }
+
+        .intro {
+            background: rgba(126, 126, 124, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border-left: 5px solid #d2d323;
+        }
+
+        .intro h2 {
+            color: #d2d323;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .intro p {
+            margin-bottom: 15px;
+            color: #f7f7f6;
+        }
+
+        .form-section {
+            background: rgba(126, 126, 124, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #d2d323;
+        }
+
+        .form-section h3 {
+            color: #d2d323;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-section h3 i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #f7f7f6;
+        }
+
+        .required {
+            color: #d2d323;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #7e7e7c;
+            border-radius: 8px;
+            background: #333333;
+            color: #f7f7f6;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d2d323;
+            box-shadow: 0 0 0 3px rgba(210, 211, 35, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .radio-item input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        .terms-section {
+            background: rgba(210, 211, 35, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 2px solid #d2d323;
+        }
+
+        .terms-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .terms-checkbox input[type="checkbox"] {
+            margin-top: 5px;
+            transform: scale(1.3);
+        }
+
+        .submit-section {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #d2d323 0%, #b0b11f 100%);
+            color: #1d1d1b;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(210, 211, 35, 0.3);
+        }
+
+        .submit-btn:disabled {
+            background: #7e7e7c;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 2px solid #7e7e7c;
+            margin-top: 40px;
+        }
+
+        .footer p {
+            color: #7e7e7c;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #d2d323;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-handshake"></i> Formulário de Interesse</h1>
+            <p>Parceria Estratégica - Gabriel Melo Personal e Online Coaching</p>
+        </div>
+
+        <div class="intro">
+            <h2>Prezada(o) Nutricionista,</h2>
+            <p>É com grande satisfação que apresentamos esta oportunidade de parceria estratégica com Gabriel Melo Personal e Online Coaching. Acreditamos que a união entre um treinamento físico de excelência e um acompanhamento nutricional de qualidade é a chave para transformar vidas e potencializar os resultados de nossos clientes.</p>
+            <p>Este formulário tem como objetivo conhecer melhor o seu perfil profissional e entender como podemos construir uma colaboração mutuamente benéfica. Suas respostas nos ajudarão a qualificar o interesse e a iniciar um diálogo produtivo para formalizarmos nossa parceria.</p>
+            <p><strong>Por favor, preencha todas as informações solicitadas com atenção.</strong></p>
+        </div>
+
+        <form id="parceiraForm" action="#" method="POST">
+            <!-- Seção 1: Informações Pessoais -->
+            <div class="form-section">
+                <h3><i class="fas fa-user"></i> 1. Informações Pessoais e de Contato</h3>
+                
+                <div class="form-group">
+                    <label for="nomeCompleto">Nome Completo <span class="required">*</span></label>
+                    <input type="text" id="nomeCompleto" name="nomeCompleto" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone">Telefone (com DDD) <span class="required">*</span></label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(21) 99999-9999" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="crn">CRN (Conselho Regional de Nutricionistas) <span class="required">*</span></label>
+                    <input type="text" id="crn" name="crn" placeholder="Ex: 12345" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="estadoCrn">Estado do CRN <span class="required">*</span></label>
+                    <select id="estadoCrn" name="estadoCrn" required>
+                        <option value="">Selecione o estado</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="redesSociais">Link para Redes Sociais Profissionais (Instagram, LinkedIn, etc.)</label>
+                    <input type="url" id="redesSociais" name="redesSociais" placeholder="https://instagram.com/seu_perfil">
+                </div>
+            </div>
+
+            <!-- Seção 2: Informações Profissionais -->
+            <div class="form-section">
+                <h3><i class="fas fa-briefcase"></i> 2. Informações Profissionais</h3>
+                
+                <div class="form-group">
+                    <label for="tempoAtuacao">Tempo de Atuação como Nutricionista <span class="required">*</span></label>
+                    <select id="tempoAtuacao" name="tempoAtuacao" required>
+                        <option value="">Selecione uma opção</option>
+                        <option value="menos-1-ano">Menos de 1 ano</option>
+                        <option value="1-3-anos">1 a 3 anos</option>
+                        <option value="3-5-anos">3 a 5 anos</option>
+                        <option value="mais-5-anos">Mais de 5 anos</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Principais Especialidades (selecione todas que se aplicam) <span class="required">*</span></label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="nutricao-clinica" name="especialidades[]" value="nutricao-clinica">
+                            <label for="nutricao-clinica">Nutrição Clínica</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="nutricao-esportiva" name="especialidades[]" value="nutricao-esportiva">
+                            <label for="nutricao-esportiva">Nutrição Esportiva</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="nutricao-materno" name="especialidades[]" value="nutricao-materno">
+                            <label for="nutricao-materno">Nutrição Materno-Infantil</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="fitoterapia" name="especialidades[]" value="fitoterapia">
+                            <label for="fitoterapia">Fitoterapia</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="comportamental" name="especialidades[]" value="comportamental">
+                            <label for="comportamental">Comportamental</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="outra-especialidade" name="especialidades[]" value="outra">
+                            <label for="outra-especialidade">Outra</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="outraEspecialidadeTexto" style="display: none;">
+                    <label for="outraEspecialidadeDescricao">Especifique a outra especialidade:</label>
+                    <input type="text" id="outraEspecialidadeDescricao" name="outraEspecialidadeDescricao">
+                </div>
+
+                <div class="form-group">
+                    <label>Tipo de Atendimento <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="online" name="tipoAtendimento" value="online" required>
+                            <label for="online">Online</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="presencial" name="tipoAtendimento" value="presencial" required>
+                            <label for="presencial">Presencial</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="ambos" name="tipoAtendimento" value="ambos" required>
+                            <label for="ambos">Ambos</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="publicoAlvo">Público-Alvo Principal <span class="required">*</span></label>
+                    <textarea id="publicoAlvo" name="publicoAlvo" placeholder="Ex: Mulheres acima de 30 anos, Atletas, Pessoas com doenças crônicas, etc." required></textarea>
+                </div>
+            </div>
+
+            <!-- Seção 3: Interesse na Parceria -->
+            <div class="form-section">
+                <h3><i class="fas fa-heart"></i> 3. Interesse na Parceria</h3>
+                
+                <div class="form-group">
+                    <label for="conheceuTrabalho">Como você conheceu o trabalho de Gabriel Melo? <span class="required">*</span></label>
+                    <textarea id="conheceuTrabalho" name="conheceuTrabalho" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="programaAlinhado">Qual programa de Gabriel Melo mais se alinha com o seu público e por quê? <span class="required">*</span></label>
+                    <textarea id="programaAlinhado" name="programaAlinhado" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="expectativas">Quais são suas principais expectativas com esta parceria? <span class="required">*</span></label>
+                    <textarea id="expectativas" name="expectativas" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Você teria interesse em colaborar na criação ou adaptação de protocolos nutricionais para os programas de Gabriel Melo (com remuneração adicional)? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="colaboracao-sim" name="interesseColaboracao" value="sim" required>
+                            <label for="colaboracao-sim">Sim</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="colaboracao-nao" name="interesseColaboracao" value="nao" required>
+                            <label for="colaboracao-nao">Não</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="colaboracao-talvez" name="interesseColaboracao" value="talvez" required>
+                            <label for="colaboracao-talvez">Talvez - gostaria de saber mais</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção 4: Termos e Condições -->
+            <div class="terms-section">
+                <h3><i class="fas fa-file-contract"></i> 4. Termos e Condições</h3>
+                <div class="terms-checkbox">
+                    <input type="checkbox" id="aceitaTermos" name="aceitaTermos" required>
+                    <label for="aceitaTermos">
+                        <strong>Declaro que li e concordo com o modelo de comissionamento de 10% sobre as vendas geradas por minhas indicações e com as diretrizes gerais da parceria apresentadas. Entendo que a formalização final da parceria dependerá de uma análise mútua e da assinatura de um termo de parceria.</strong> <span class="required">*</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Botão de Envio -->
+            <div class="submit-section">
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i> Enviar Formulário
+                </button>
+            </div>
+        </form>
+
+        <!-- Rodapé -->
+        <div class="footer">
+            <p>Agradecemos imensamente o seu interesse em fazer parte da nossa rede de parceiros.</p>
+            <p>Entraremos em contato em breve para dar os próximos passos e discutir como podemos construir uma parceria de sucesso.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>coach.gabrielmelo@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>(21) 96433-8438</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-instagram"></i>
+                    <span>@coachgabrielmb</span>
+                </div>
+            </div>
+            
+            <p style="margin-top: 20px; font-size: 0.9rem;">
+                <strong>Atenciosamente,<br>
+                Equipe Gabriel Melo Personal e Online Coaching</strong>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Mostrar campo de texto quando "Outra" especialidade for selecionada
+        document.getElementById('outra-especialidade').addEventListener('change', function() {
+            const outroTexto = document.getElementById('outraEspecialidadeTexto');
+            if (this.checked) {
+                outroTexto.style.display = 'block';
+                document.getElementById('outraEspecialidadeDescricao').required = true;
+            } else {
+                outroTexto.style.display = 'none';
+                document.getElementById('outraEspecialidadeDescricao').required = false;
+                document.getElementById('outraEspecialidadeDescricao').value = '';
+            }
+        });
+
+        // Validação de especialidades (pelo menos uma deve ser selecionada)
+        function validarEspecialidades() {
+            const checkboxes = document.querySelectorAll('input[name="especialidades[]"]');
+            const algumSelecionado = Array.from(checkboxes).some(checkbox => checkbox.checked);
+            return algumSelecionado;
+        }
+
+        // Formatação do telefone
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 11) {
+                value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+            } else if (value.length >= 7) {
+                value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+            } else if (value.length >= 3) {
+                value = value.replace(/(\d{2})(\d{0,5})/, '($1) $2');
+            }
+            e.target.value = value;
+        });
+
+        // Validação do formulário
+        document.getElementById('parceiraForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!validarEspecialidades()) {
+                alert('Por favor, selecione pelo menos uma especialidade.');
+                return;
+            }
+
+            // Aqui você pode adicionar a lógica para enviar o formulário
+            // Por exemplo, usando fetch() para enviar para um servidor
+            
+            alert('Formulário enviado com sucesso! Entraremos em contato em breve.');
+            
+            // Opcional: resetar o formulário
+            // this.reset();
+        });
+
+        // Validação em tempo real dos campos obrigatórios
+        const requiredFields = document.querySelectorAll('input[required], select[required], textarea[required]');
+        requiredFields.forEach(field => {
+            field.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    this.style.borderColor = '#ff6b6b';
+                } else {
+                    this.style.borderColor = '#d2d323';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
